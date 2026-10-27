@@ -44,99 +44,164 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
     title: 'Résumé',
     entries: [
       {
-        period: '2013 – 2017',
-        place: 'Sun Yat-sen University',
-        role: 'B.S. in Software Engineering',
-      },
-      {
-        period: '2017 – 2020',
-        place: 'HOTSAR Studio · Shanghai',
-        role: 'Co-founder',
-        logo: { src: `${import.meta.env.BASE_URL}images/hotsar.jpg`, alt: 'HOTSAR' },
+        period: 'Class of 2027',
+        place: 'Northwestern University in Qatar',
+        role: 'B.S. in Communication · Minor in AI & Media',
         points: [
-          'Co-founder · team of 20+',
-          'Clients: Alibaba brands, Tencent, NetEase, DiDi, China Resources, McDonald’s…',
-          'Work: development / creative direction / animation / team management',
+          'GPA: 3.77 / 4.0',
+          'Doha, Qatar',
         ],
       },
       {
-        period: '2020 – 2025',
-        place: 'Bad Printer Studio · Shenzhen',
-        role: 'Founder',
-        logo: { src: `${import.meta.env.BASE_URL}images/bp.png`, alt: 'Bad Printer Studio' },
-        points: [
-          'Founder · team of 14',
-          'Clients: Honor of Kings / Trip.com / ByteDance / Kuaishou / VIVO / Tecno / Xiaomi / IM Motors…',
-          'Work: team management / creative direction / animation / development',
-        ],
-      },
-      {
-        period: '2025 – Now',
-        place: 'Content Creator',
+        period: '2025 – Present',
+        place: 'Research Experience',
         groups: [
           {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
-            sub: 'tech-DIY creator',
-            items: ['120K on Douyin · 87K on Bilibili · 23K on Xiaohongshu'],
-            links: SOCIAL_LINKS,
+            heading: 'Game and AI Animation Marketing Project',
+            sub: 'Research Assistant · Aug 2026 – Present',
+            items: [
+              'Social media strategy, game testing, and user experience feedback.',
+            ],
+          },
+          {
+            heading: 'Qatar Art World and Collectors Project',
+            sub: 'Research Assistant · Aug 2026 – Present',
+            items: [
+              'Qualitative research, interviews, translation, and transcription.',
+            ],
+          },
+          {
+            heading: 'Thai-Chinese Cultural Heritage Project',
+            sub: 'Research Assistant · Aug 2025 – Aug 2026',
+            items: [
+              'Literature reviews, cultural research, and annotated datasets.',
+            ],
           },
         ],
       },
       {
-        period: '2026 – Now',
-        place: 'Indie Developer',
-        groups: [{ logo: 'zooop', sub: 'AI creation platform', link: 'https://zooop.ai/' }],
+        period: 'Jan 2026 – Present',
+        place: 'NU-Q Views',
+        role: 'Design Lead & Associate Social Media Lead',
+        points: [
+          'Lead magazine layouts and digital visual design.',
+          'Plan weekly social media content and maintain the publication website.',
+          'Coordinate design tasks and support editorial production.',
+        ],
+      },
+      {
+        period: '2025 – 2026',
+        place: 'Professional Experience',
+        groups: [
+          {
+            heading: 'Jabil Electronics (Wuxi)',
+            sub: 'Public Relations Intern · May – Aug 2026',
+            items: [
+              'Designed corporate presentations and coordinated promotional video production.',
+            ],
+          },
+          {
+            heading: 'Wuxi Online and Offline Communication',
+            sub: 'Overseas Marketing Intern · Jul – Aug 2025',
+            items: [
+              'Created advertising scripts, coordinated influencer outreach, and analyzed campaign performance.',
+            ],
+          },
+        ],
+      },
+      {
+        period: '2024 – Present',
+        place: 'Leadership & Campus Experience',
+        points: [
+          'Chinese Student Association — Co-President & Social Media Lead',
+          'Vibe Coding & Exploring Global Media — Teachning Assistant',
+          'HollyWould Theater Club — Former Head of Art Department',
+          'NU-Q Library — Student Library Assistant',
+          'NU-Q Admissions Office - Admissions Student Diplomat',
+        ],
       },
     ],
   },
+
   zh: {
-    title: 'Résumé',
+    title: '个人履历',
     entries: [
       {
-        period: '2013 – 2017',
-        place: '中山大学',
-        role: '软件工程 · 本科',
-      },
-      {
-        period: '2017 – 2020',
-        place: 'HOTSAR 工作室 · 上海',
-        role: '联合创始人',
-        logo: { src: `${import.meta.env.BASE_URL}images/hotsar.jpg`, alt: 'HOTSAR' },
+        period: '2027届',
+        place: '西北大学卡塔尔校区',
+        role: '传播学理学学士 · 辅修人工智能与媒体',
         points: [
-          '联合创始人，团队人数 20+',
-          '服务客户：阿里系品牌、腾讯、网易、滴滴、华润、麦当劳…',
-          '负责：技术开发 / 创意策划 / 动画制作 / 团队管理',
+          'GPA：3.77 / 4.0',
+          '卡塔尔多哈',
         ],
       },
       {
-        period: '2020 – 2025',
-        place: '坏打印机工作室 · 深圳',
-        role: '创始人',
-        logo: { src: `${import.meta.env.BASE_URL}images/bp.png`, alt: '坏打印机工作室' },
-        points: [
-          '创始人，团队人数 14',
-          '服务客户：王者荣耀 / 携程 / 字节 / 快手 / VIVO / 传音 / 小米…',
-          '负责：团队管理 / 创意策划 / 动画制作 / 技术开发',
-        ],
-      },
-      {
-        period: '2025 – 至今',
-        place: '自媒体博主',
+        period: '2025 年 – 至今',
+        place: '研究经历',
         groups: [
           {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
-            sub: '科技 DIY 博主',
-            items: ['抖音 12 万 · B站 8.7 万 · 小红书 2.3 万 关注'],
-            links: SOCIAL_LINKS,
+            heading: '游戏与 AI 动画营销项目',
+            sub: '研究助理 · 2026 年 8 月 – 至今',
+            items: [
+              '参与社交媒体营销策划、游戏测试和用户体验评估',
+            ],
+          },
+          {
+            heading: '卡塔尔艺术界与收藏家研究项目',
+            sub: '研究助理 · 2026 年 8 月 – 至今',
+            items: [
+              '开展定性研究，协助访谈、翻译及资料整理',
+            ],
+          },
+          {
+            heading: '泰中文化遗产研究项目',
+            sub: '研究助理 · 2025 年 8 月 – 2026 年 8 月',
+            items: [
+              '负责文献综述、文化研究与数据资料整理',
+            ],
           },
         ],
       },
       {
-        period: '2026 – 至今',
-        place: '独立开发',
-        groups: [{ logo: 'zooop', sub: 'AI 创作平台', link: 'https://zooop.ai/' }],
+        period: '2026 年 1 月 – 至今',
+        place: 'NU-Q Views',
+        role: '设计负责人兼社交媒体副负责人',
+        points: [
+          '负责杂志排版和数字视觉设计',
+          '策划每周社交媒体内容并维护刊物网站',
+          '协调设计工作并支持编辑出版流程',
+        ],
+      },
+      {
+        period: '2025 – 2026 年',
+        place: '企业实习经历',
+        groups: [
+          {
+            heading: '捷普电子（无锡）有限公司',
+            sub: '公共关系实习生 · 2026 年 5 – 8 月',
+            items: [
+              '优化企业演示文稿，协调宣传视频制作',
+            ],
+          },
+          {
+            heading: '无锡线上线下通信信息技术有限公司',
+            sub: '海外营销实习生 · 2025 年 7 – 8 月',
+            items: [
+              '撰写广告脚本、协调海外达人合作并分析营销效果',
+            ],
+          },
+        ],
+      },
+      {
+        period: '2024 年 – 至今',
+        place: '校园领导与工作经历',
+        points: [
+          '中国学生协会 — 联合主席兼社交媒体负责人',
+          'Vibe Coding 与 Exploring Global Media — 课程助教',
+          'HollyWould 戏剧社 — 前艺术部门负责人',
+          '西北大学卡塔尔校区图书馆 — 学生助理',
+          '西北大学卡塔尔校区招生办公室 - 招生学生大使'
+        ],
       },
     ],
   },

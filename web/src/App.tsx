@@ -159,8 +159,11 @@ export default function App() {
         aria-hidden="true"
       /> */}
 
-      {/* 中英切换暂时隐藏，默认中文 */}
-      {/* <LangToggle lang={lang} onToggle={() => setLang((l) => (l === 'en' ? 'zh' : 'en'))} /> */}
+      {/* 中英文切换按钮 */}
+<LangToggle
+  lang={lang}
+  onToggle={() => setLang((l) => (l === 'en' ? 'zh' : 'en'))}
+/>
 
       {/* 首屏装饰：发丝内框 + 四角定位标 + 角标元数据（随滚动淡出） */}
       <motion.div className="hero-chrome" style={{ opacity: heroChromeOpacity }} aria-hidden="true">
@@ -173,7 +176,6 @@ export default function App() {
           <span className="hm-name">Yujun Shen</span>
           <span>Creative Technologist</span>
         </div>
-        <div className="hero-meta hm-tr">Portfolio — 2026</div>
         <div className="hero-meta hm-bl">Code · Art · Play</div>
         <div className="hero-meta hm-right">Based in Qatar</div>
       </motion.div>
