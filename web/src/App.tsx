@@ -24,15 +24,15 @@ type Lang = 'en' | 'zh'
 
 const COPY = {
   en: {
-    title: 'About Sen',
+    title: 'About Yujun',
     paragraphs: [
-      "I'm Sen — a creative technologist living where code meets art. I spend my days around coding, creativity, playful interaction & design, and CG work. I love studying and combining skills across different fields — to create, and to explore more possibilities.",
+      "I'm a Communication student at Northwestern University in Qatar, minoring in AI & Media. My interests lie in visual design, digital media, and creative technology. Through my experience in editorial design, social media, and research projects involving games and AI animation, I enjoy exploring new ways to communicate ideas and create engaging digital experiences.",
     ],
   },
   zh: {
-    title: 'About Sen',
+    title: 'About Yujun',
     paragraphs: [
-      '我是 Sen——一个游走在代码与艺术之间的创意技术人。我常年和 Coding、创意、有趣的交互 & 设计、CG 创作等打交道，喜欢研究并组合不同领域的技能，来创造并探索更多可能性。',
+      '我就读于西北大学卡塔尔校区，主修传播学，辅修人工智能与媒体。我对视觉设计、数字媒体和创意技术有着浓厚的兴趣。希望可以不断探索如何通过创意表达和新兴技术，创造更有吸引力的数字体验。',
     ],
   },
 }
@@ -47,7 +47,7 @@ function Hero({ lang, cueOpacity }: { lang: Lang; cueOpacity: MotionValue<number
   })
   // 透明度在 about 顶部升到约 30vh 时归 0：起点 60%→进度 p 时顶部在 0.6×(1−p)，
   // 令 =0.3 解得 p=0.5，故 opacity 区间 [0, 0.5]
-  const blur = useTransform(scrollYProgress, [0, 0.5], ['blur(0px)', 'blur(16px)'])
+  const blur = useTransform(scrollYProgress, [0, 0.5], ['blur(0px)', 'blur(0px)'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   // 视差：标题上升更快、字距随滚动拉开；正文上升慢一点
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -96])
@@ -92,7 +92,7 @@ function LangToggle({ lang, onToggle }: { lang: Lang; onToggle: () => void }) {
 }
 
 export default function App() {
-  const [lang, setLang] = useState<Lang>('zh')
+  const [lang, setLang] = useState<Lang>('en')
   const { scrollY } = useScroll()
   // 作品区蒙层：以作品区顶部从视口底进入到视口中部的进度，驱动 3D 渐暗 + 模糊
   const worksRef = useRef(null)
@@ -170,12 +170,12 @@ export default function App() {
         <span className="hero-mark bl">+</span>
         <span className="hero-mark br">+</span>
         <div className="hero-meta hm-tl">
-          <span className="hm-name">Sen Zheng 郑越升</span>
+          <span className="hm-name">Yujun Shen</span>
           <span>Creative Technologist</span>
         </div>
         <div className="hero-meta hm-tr">Portfolio — 2026</div>
         <div className="hero-meta hm-bl">Code · Art · Play</div>
-        <div className="hero-meta hm-right">Based in Shenzhen</div>
+        <div className="hero-meta hm-right">Based in Qatar</div>
       </motion.div>
 
       {/* 全屏胶片噪点蒙层（multiply 混合） */}
