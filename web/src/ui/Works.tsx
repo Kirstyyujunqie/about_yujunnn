@@ -1,3 +1,4 @@
+import EventGallery from './EventGallery'
 import TravelGallery from './TravelGallery'
 import { useEffect, useRef, useState, type Ref } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
@@ -136,6 +137,7 @@ function WorkDetail({
   const sub = doc ? [item.meta, doc.role].filter(Boolean).join('  ·  ') : ''
 
   if (item.slug === 'travel-photography') return <TravelGallery lang={lang} onClose={onClose} />
+  if (item.slug === 'event-photography') return <EventGallery lang={lang} onClose={onClose} />
 
   return (
     <>
