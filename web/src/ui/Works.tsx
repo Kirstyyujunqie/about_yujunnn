@@ -1,3 +1,4 @@
+import SocialDetail from './SocialDetail'
 import EventGallery from './EventGallery'
 import TravelGallery from './TravelGallery'
 import { useEffect, useRef, useState, type Ref } from 'react'
@@ -138,6 +139,7 @@ function WorkDetail({
 
   if (item.slug === 'travel-photography') return <TravelGallery lang={lang} onClose={onClose} />
   if (item.slug === 'event-photography') return <EventGallery lang={lang} onClose={onClose} />
+  if (item.slug === 'nuq-views-social' || item.slug === 'csa-social') return <SocialDetail slug={item.slug} lang={lang} onClose={onClose} />
 
   return (
     <>
