@@ -1,0 +1,43 @@
+.travel-gallery, .travel-viewer { box-sizing: border-box; color: #f4f1ea; border: 1px solid #ffffff20; background: #171b1e; }
+.travel-gallery::backdrop, .travel-viewer::backdrop { background: #080b10d9; }
+.travel-gallery { width: min(1320px, 94vw); max-width: 94vw; height: 92dvh; max-height: 92dvh; padding: 70px clamp(20px, 5vw, 90px) 60px; border-radius: 18px; overflow-y: auto; overscroll-behavior: contain; }
+.travel-gallery-rows { display: grid; gap: clamp(24px, 4vw, 64px); }
+.travel-row { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; }
+.travel-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 32px); }
+.travel-single-portrait { width: 62%; margin: 16px auto; }
+.travel-photo { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.travel-photo img { display: block; width: 100%; height: auto; border-radius: 2px; }
+.travel-close, .travel-prev, .travel-next { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #ffffff50; border-radius: 50%; color: white; background: #171b1eeb; cursor: pointer; font: 30px/1 sans-serif; z-index: 1; }
+.travel-close { top: 12px; right: 12px; }
+.travel-photo:focus-visible, .travel-close:focus-visible, .travel-prev:focus-visible, .travel-next:focus-visible { outline: 2px solid #e9bf8d; outline-offset: 5px; }
+.travel-viewer { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; padding: 60px; border: 0; overflow: hidden; }
+.travel-viewer[open] { display: grid; place-items: center; }
+.travel-viewer img { max-width: 100%; max-height: calc(100dvh - 120px); width: auto; height: auto; object-fit: contain; }
+.travel-prev { left: 8px; top: calc(50% - 22px); }
+.travel-next { right: 8px; top: calc(50% - 22px); }
+@media (max-width: 640px) {
+  .travel-gallery { width: 96vw; max-width: 96vw; padding: 64px 14px 30px; }
+  .travel-pair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .travel-single-portrait { width: 100%; margin: 0; }
+  .travel-viewer { padding: 60px 8px; }
+  .travel-prev, .travel-next { top: auto; bottom: 8px; }
+}
+
+/* Match the original centered work-detail frame, overriding the global margin reset. */
+.travel-gallery {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: calc(100vw - 2 * clamp(16px, 6vw, 120px));
+  max-width: none;
+  height: calc(100dvh - 2 * clamp(16px, 5vh, 56px));
+  max-height: none;
+  padding: 70px clamp(20px, 4vw, 64px) 60px;
+  border-radius: 20px;
+  background: rgba(29, 33, 36, 0.98);
+}
+.travel-gallery-rows { width: 100%; max-width: 900px; margin: 0 auto; }
+.travel-viewer { position: fixed; inset: 0; margin: auto; }
+@media (max-width: 640px) {
+  .travel-gallery { padding: 64px 14px 30px; }
+}

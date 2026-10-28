@@ -1,3 +1,4 @@
+import TravelGallery from './TravelGallery'
 import { useEffect, useRef, useState, type Ref } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
@@ -133,6 +134,8 @@ function WorkDetail({
   const tags = doc ? doc.tags || item.tags : null
   // 副标题不含年份；标签单独做 badge 展示
   const sub = doc ? [item.meta, doc.role].filter(Boolean).join('  ·  ') : ''
+
+  if (item.slug === 'travel-photography') return <TravelGallery lang={lang} onClose={onClose} />
 
   return (
     <>
