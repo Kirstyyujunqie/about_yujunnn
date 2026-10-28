@@ -99,7 +99,50 @@ function NoisePlane() {
   )
 }
 
+
+// Keep portfolio body images clear while preserving grain on banners and elsewhere.
+function useScreenshotNoiseMask() {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    let frame = 0
+    let previous = ''
+    const update = () => {
+      const overlay = overlayRef.current
+      if (overlay) {
+        const width = window.innerWidth
+        const height = window.innerHeight
+        const holes: string[] = []
+        document.querySelectorAll<HTMLImageElement>('.wk-detail .wk-md img').forEach((img) => {
+          const path = new URL(img.src, window.location.href).pathname
+          const cleanImage = /\/works\/nuq-views-website\/page-[12]\.png$/.test(path) || path.includes('/works/nuq-views-magazine/') || path.includes('/works/jabil-presentations/') || path.includes('/works/unscripted-women/') || path.includes('/works/ai-2d-animation/') || path.includes('/works/waiting-input/')
+          if (!cleanImage || !img.complete || !img.naturalWidth) return
+          const panel = img.closest('.wk-detail')
+          if (!panel) return
+          const p = panel.getBoundingClientRect()
+          const r = img.getBoundingClientRect()
+          if (r.bottom <= p.top || r.top >= p.bottom || r.right <= 0 || r.left >= width) return
+          // Both clips follow scrolling and opening/closing animations.
+          const id = 'panel-' + holes.length
+          holes.push(`<defs><clipPath id="${id}"><rect x="${p.x}" y="${p.y}" width="${p.width}" height="${p.height}" rx="20"/></clipPath></defs><rect x="${r.x}" y="${r.y}" width="${r.width}" height="${r.height}" rx="12" fill="black" clip-path="url(#${id})"/>`)
+        })
+        const svg = holes.length ? `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><defs><mask id="clear-images" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}"><rect width="100%" height="100%" fill="white"/>${holes.join('')}</mask></defs><rect width="100%" height="100%" fill="white" mask="url(#clear-images)"/></svg>` : ''
+        if (svg !== previous) {
+          const value = svg ? `url("data:image/svg+xml,${encodeURIComponent(svg)}")` : 'none'
+          overlay.style.maskImage = value
+          overlay.style.webkitMaskImage = value
+          previous = svg
+        }
+      }
+      frame = requestAnimationFrame(update)
+    }
+    frame = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(frame)
+  }, [])
+  return overlayRef
+}
+
 export default function NoiseOverlay() {
+  const overlayRef = useScreenshotNoiseMask()
   // 仅客户端挂载，避免 SSR 不一致（此项目纯 CSR，仍保持一致写法）
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
@@ -108,6 +151,7 @@ export default function NoiseOverlay() {
   return (
     <div
       aria-hidden="true"
+      ref={overlayRef}
       data-three-noise-overlay={SHADER_VERSION}
       style={{
         position: 'fixed',

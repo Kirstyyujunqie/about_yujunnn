@@ -64,6 +64,8 @@ for (const path in files) {
   docs[slug] = { slug, ...data, body } as WorkDoc
 }
 
-export function getWorkDoc(slug?: string): WorkDoc | null {
-  return slug ? docs[slug] || null : null
+// Localized files use <slug>.en.md and <slug>.zh.md; existing files still work.
+export function getWorkDoc(slug?: string, lang?: 'en' | 'zh'): WorkDoc | null {
+  if (!slug) return null
+  return (lang ? docs[`${slug}.${lang}`] : null) || docs[slug] || null
 }

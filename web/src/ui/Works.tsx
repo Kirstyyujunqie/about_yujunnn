@@ -114,16 +114,18 @@ function SectionWorks({
 // 全屏沉浸详情：渲染该作品的 md（banner + 标题 + markdown 正文 + 外链）；
 // 无 md 时回退到占位 banner + meta/标签简介
 function WorkDetail({
+  lang,
   item,
   data,
   onClose,
 }: {
+  lang: 'en' | 'zh'
   item: WorkListItem
   data: WorksLang
   onClose: () => void
 }) {
   const [bannerError, setBannerError] = useState(false)
-  const doc = getWorkDoc(item.slug)
+  const doc = getWorkDoc(item.slug, lang)
   const title = (doc && doc.title) || item.name
   const banner = doc && doc.banner
   // 有 md 详情时展示完整信息；无 md 时详情页只保留标题 + 统一占位文案
@@ -291,7 +293,8 @@ export default function Works({ lang, innerRef }: { lang: 'en' | 'zh'; innerRef:
         {active && (
           <WorkDetail
             key={active.slug || active.name}
-            item={active}
+            lang={lang}
+            item={sections.flatMap((section) => section.items || []).find((item) => active.slug && item.slug === active.slug) || active}
             data={data}
             onClose={() => setActive(null)}
           />

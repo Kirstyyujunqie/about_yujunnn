@@ -1,17 +1,6 @@
-// 作品集数据（双语）。5 大板块 → 点击展开作品详情。
-// 纯数据驱动：增删板块 / 作品只改本文件，Works.jsx 仅负责渲染。
-//
-// 板块字段：
-//   id        唯一标识（用于 framer layoutId 共享元素动画）
-//   no        编号 '01'…'05'
-//   title     板块标题
-//   tagline   索引行右侧一句话
-//   items[]   扁平作品列表：{ name, meta?, tags?, link? }
-//             点击 item 弹出全屏详情，可补充可选媒体/文案字段：
-//             { image?, video?, year?, desc? }（缺省时媒体用占位、简介回退 meta/标签）
-//   groups[]  分组作品（与 items 二选一）：{ heading, items: string[] }
-//   awards[]  奖项 chip（可选）
-//   footer    底部技术/备注一行（可选）
+// Yujun Shen — bilingual portfolio data.
+// Edit `sections` to change categories and portfolio items.
+// Each item's `slug` can match a Markdown file at src/content/works/<slug>.md.
 
 export interface WorkListItem {
   name: string
@@ -52,170 +41,210 @@ export interface WorksLang {
 }
 
 export const WORKS: Record<'zh' | 'en', WorksLang> = {
-  zh: {
-    title: 'Works',
-    closeLabel: '返回',
-    openLabel: '展开作品',
-    hint: '继续下滑',
-    awardsLabel: '获奖',
-    visitLabel: '访问作品',
-    detailPlaceholder: '你的作品介绍',
-    phImageLabel: '图片 / 视频',
-    phButtonLabel: '跳转按钮',
-    countLabel: (n) => `${n} 件作品`,
-    sections: [
+  "zh": {
+    "title": "作品集",
+    "closeLabel": "返回",
+    "openLabel": "展开作品",
+    "hint": "继续下滑",
+    "awardsLabel": "奖项",
+    "visitLabel": "访问作品",
+    "detailPlaceholder": "作品介绍即将更新",
+    "phImageLabel": "图片 / 视频即将更新",
+    "phButtonLabel": "作品链接",
+    "countLabel": (n) => `${n} 件作品`,
+    "sections": [
       {
-        id: 'ad',
-        no: '01',
-        title: '广告项目',
-        tagline: '坏打印机工作室',
-        items: [
-          { name: '谁在弹古琴', meta: '互动项目', slug: 'guqin' },
-          { name: '新加坡联合早报 · 校园时光机', meta: '互动项目', slug: 'time-machine' },
-          { name: '动画合集', meta: '动画', slug: 'animation-collection' },
-          { name: '其他作品', slug: 'other-works' },
-        ],
-        awards: ['虎啸奖', 'FWA', 'Awwwards'],
-      },
-      {
-        id: 'maker',
-        no: '02',
-        title: '自媒体',
-        tagline: '23 万关注 ｜ 年更博主',
-        items: [
+        "id": "editorial",
+        "no": "01",
+        "title": "编辑、网页与企业设计",
+        "tagline": "杂志 · 网页 · 企业演示",
+        "items": [
           {
-            name: '我把工作室的玻璃墙改造成了游戏机',
-            meta: '1700 万 播放',
-            tags: ['B站每周必看', 'B站热搜'],
-            slug: 'glass-wall-arcade',
+            "name": "NU-Q Views 杂志设计",
+            "meta": "杂志排版与视觉设计",
+            "slug": "nuq-views-magazine"
           },
           {
-            name: '我把代码写入狗狗的衣服里',
-            meta: '900 万 播放',
-            tags: ['微博 / 抖音 / B站 三平台热搜榜'],
-            slug: 'dog-code-clothes',
+            "name": "Unscripted Women 主题杂志",
+            "meta": "研究、写作与杂志设计",
+            "slug": "unscripted-women"
           },
           {
-            name: '我把 Switch 放大十倍，做成了智能猫窝',
-            meta: '500 万 播放',
-            tags: ['B站每周必看'],
-            slug: 'switch-cat-house',
+            "name": "Jabil 企业演示文稿设计",
+            "meta": "企业视觉与信息设计",
+            "slug": "jabil-presentations"
           },
-          { name: '我们在80年代的红白机游戏里结婚啦！！', slug: 'retro-game-wedding' },
-        ],
-        footer: '3D 建模 · 3D 打印 · PCB 设计 · 嵌入式开发 · 软件开发 · 动画包装',
+          {
+            "name": "NU-Q Views 网站",
+            "meta": "网页与界面设计",
+            "slug": "nuq-views-website"
+          }
+        ]
       },
       {
-        id: 'product',
-        no: '03',
-        title: '产品',
-        tagline: 'ZOOOP',
-        items: [
-          { name: 'ZOOOP', meta: 'AI 原生创作平台', link: 'https://zooop.ai/', slug: 'zooop' },
-        ],
+        "id": "ai",
+        "no": "02",
+        "title": "AI 与互动媒体",
+        "tagline": "游戏 · 创意技术 · 数字体验",
+        "items": [
+          {
+            "name": "Vibe Coding 与创意实验",
+            "meta": "网站与互动媒体",
+            "slug": "vibe-coding"
+          },
+          {
+            "name": "AI 2D 动画",
+            "meta": "AI 辅助二维动画创作",
+            "slug": "ai-2d-animation"
+          }
+        ]
       },
       {
-        id: 'graphics',
-        no: '04',
-        title: '个人业余作品',
-        tagline: 'Raymarching · WebGL · Blender',
-        items: [
-          { name: 'Raymarching', slug: 'raymarching' },
-          { name: 'WebGL', slug: 'webgl' },
-          { name: 'Blender', slug: 'blender' },
-          { name: '其他业余作品', slug: 'other-side-works' },
-        ],
+        "id": "social",
+        "no": "03",
+        "title": "社交媒体与品牌传播",
+        "tagline": "内容策划 · 视觉传播 · 社区运营",
+        "items": [
+          {
+            "name": "NU-Q Views 社交媒体",
+            "meta": "活动报道与人物采访",
+            "slug": "nuq-views-social"
+          },
+          {
+            "name": "中国学生协会（CSA）社交媒体",
+            "meta": "活动宣传与 Instagram 内容",
+            "slug": "csa-social"
+          }
+        ]
       },
-    ],
+      {
+        "id": "photography",
+        "no": "04",
+        "title": "摄影作品",
+        "tagline": "人物 · 场所 · 日常瞬间",
+        "items": [
+          {
+            "name": "旅行与街头摄影",
+            "meta": "旅行与日常记录",
+            "slug": "travel-photography"
+          },
+          {
+            "name": "活动摄影",
+            "meta": "活动与校园生活",
+            "slug": "event-photography"
+          }
+        ]
+      }
+    ]
   },
-  en: {
-    title: 'Works',
-    closeLabel: 'Back',
-    openLabel: 'Explore',
-    hint: 'Keep scrolling',
-    awardsLabel: 'Awards',
-    visitLabel: 'Visit site',
-    detailPlaceholder: 'Your work description',
-    phImageLabel: 'Image / Video',
-    phButtonLabel: 'Link button',
-    countLabel: (n) => `${n} works`,
-    sections: [
+  "en": {
+    "title": "Works",
+    "closeLabel": "Back",
+    "openLabel": "Explore",
+    "hint": "Keep scrolling",
+    "awardsLabel": "Awards",
+    "visitLabel": "Visit site",
+    "detailPlaceholder": "Project details coming soon",
+    "phImageLabel": "Images / Video coming soon",
+    "phButtonLabel": "Project link",
+    "countLabel": (n) => `${n} works`,
+    "sections": [
       {
-        id: 'ad',
-        no: '01',
-        title: 'Advertising',
-        tagline: 'HOTSAR · Bad Printer',
-        items: [
-          { name: 'Who’s Talking About Guqin', meta: 'Interactive', slug: 'guqin' },
-          { name: 'Lianhe Zaobao · Campus Time Machine', meta: 'Interactive', slug: 'time-machine' },
-          { name: 'Animation Reel', meta: 'Animation', slug: 'animation-collection' },
-          { name: 'Other works', slug: 'other-works' },
-        ],
-        awards: ['Tiger Roar', 'FWA', 'Awwwards'],
-      },
-      {
-        id: 'maker',
-        no: '02',
-        title: 'Content Creator',
-        tagline: '230K followers',
-        items: [
+        "id": "editorial",
+        "no": "01",
+        "title": "Editorial, Web & Corporate Design",
+        "tagline": "Magazines · Websites · Presentations",
+        "items": [
           {
-            name: '“I Turned the Studio’s Glass Wall into a Game Console”',
-            meta: '17M views',
-            tags: ['Bilibili Weekly Picks', 'Bilibili Trending'],
-            slug: 'glass-wall-arcade',
+            "name": "NU-Q Views Magazine",
+            "meta": "Editorial Layout & Design",
+            "slug": "nuq-views-magazine"
           },
           {
-            name: '“I Wrote Code into My Dog’s Clothes”',
-            meta: '9M views',
-            tags: ['Trending on Weibo / Douyin / Bilibili'],
-            slug: 'dog-code-clothes',
+            "name": "Unscripted Women — Magazine",
+            "meta": "Research, Writing & Editorial Design",
+            "slug": "unscripted-women"
           },
           {
-            name: '“I Made a 10× Switch into a Smart Cat House”',
-            meta: '5M views',
-            tags: ['Bilibili Weekly Picks'],
-            slug: 'switch-cat-house',
+            "name": "Jabil Corporate Presentations",
+            "meta": "Presentation & Information Design",
+            "slug": "jabil-presentations"
           },
-          { name: '“We Got Married in an 80s Famicom Game!!”', slug: 'retro-game-wedding' },
-        ],
-        footer: 'Tech: 3D modeling · 3D printing · PCB design · embedded · software · motion graphics',
+          {
+            "name": "NU-Q Views Website",
+            "meta": "Web & Interface Design",
+            "slug": "nuq-views-website"
+          }
+        ]
       },
       {
-        id: 'product',
-        no: '03',
-        title: 'Products',
-        tagline: 'ZOOOP',
-        items: [
-          { name: 'ZOOOP', meta: 'AI-native creation platform', link: 'https://zooop.ai/', slug: 'zooop' },
-        ],
+        "id": "ai",
+        "no": "02",
+        "title": "AI & Interactive Media",
+        "tagline": "Games · Creative Technology · Digital Experience",
+        "items": [
+          {
+            "name": "Vibe Coding & Creative Experiments",
+            "meta": "Web & Interactive Media",
+            "slug": "vibe-coding"
+          },
+          {
+            "name": "AI 2D Animation",
+            "meta": "AI-assisted 2D Animation",
+            "slug": "ai-2d-animation"
+          }
+        ]
       },
       {
-        id: 'graphics',
-        no: '04',
-        title: 'Side Projects',
-        tagline: 'Raymarching · WebGL · Blender',
-        items: [
-          { name: 'Raymarching', slug: 'raymarching' },
-          { name: 'WebGL', slug: 'webgl' },
-          { name: 'Blender', slug: 'blender' },
-          { name: 'Other side projects', slug: 'other-side-works' },
-        ],
+        "id": "social",
+        "no": "03",
+        "title": "Social Media & Branding",
+        "tagline": "Content Strategy · Visual Communication",
+        "items": [
+          {
+            "name": "NU-Q Views Social Media",
+            "meta": "Event Coverage & Interviews",
+            "slug": "nuq-views-social"
+          },
+          {
+            "name": "Chinese Students Association Social Media",
+            "meta": "Campaigns & Instagram Content",
+            "slug": "csa-social"
+          }
+        ]
       },
-    ],
-  },
+      {
+        "id": "photography",
+        "no": "04",
+        "title": "Photography",
+        "tagline": "People · Places · Moments",
+        "items": [
+          {
+            "name": "Travel & Street Photography",
+            "meta": "Places & Everyday Moments",
+            "slug": "travel-photography"
+          },
+          {
+            "name": "Event Photography",
+            "meta": "Events & Campus Life",
+            "slug": "event-photography"
+          }
+        ]
+      }
+    ]
+  }
 }
 
-// 板块配图（横向画廊每张卡片左侧的整高封面）。放到 public/works/covers/ 下。
-// 缺图时左栏用大编号渐变占位，放入图片后自动点亮。
+// Optional cover images. Until you add your own images, each card shows
+// the project's built-in gradient/number placeholder.
+// Add covers to: web/public/works/covers/<id>.jpg
 export const SECTION_COVERS: Record<string, string> = {
-  ad: `${import.meta.env.BASE_URL}works/covers/ad.jpg`,
-  maker: `${import.meta.env.BASE_URL}works/covers/maker.jpg`,
-  product: `${import.meta.env.BASE_URL}works/covers/product.jpg`,
-  graphics: `${import.meta.env.BASE_URL}works/covers/graphics.jpg`,
+  editorial: `${import.meta.env.BASE_URL}works/covers/editorial.jpg`,
+  ai: `${import.meta.env.BASE_URL}works/covers/ai.png`,
+  social: `${import.meta.env.BASE_URL}works/covers/social.jpg`,
+  photography: `${import.meta.env.BASE_URL}works/covers/photography.jpg`,
 }
 
-// 统计一个板块的作品数（items 或 groups 求和），用于索引行 hover 显示
 export function sectionCount(section: WorkSection): number {
   if (section.items) return section.items.length
   if (section.groups) return section.groups.reduce((n, g) => n + g.items.length, 0)

@@ -48,7 +48,6 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         place: 'Northwestern University in Qatar',
         role: 'B.S. in Communication · Minor in AI & Media',
         points: [
-          'GPA: 3.77 / 4.0',
           'Doha, Qatar',
         ],
       },
