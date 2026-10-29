@@ -40,25 +40,22 @@ const COPY = {
 function Hero({ lang, cueOpacity }: { lang: Lang; cueOpacity: MotionValue<number> }) {
   const { title, paragraphs } = COPY[lang]
   const aboutRef = useRef(null)
-  // 触发起点提前：about 顶部位于视口 60% 处即开始（offset[0] 进度 0），到达顶部为进度 1
+  // 以首屏滚动距离控制淡出，避免文案上移后在页面顶部就变透明。
   const { scrollYProgress } = useScroll({
     target: aboutRef,
-    offset: ['start 0.6', 'start start'],
+    offset: ['start start', 'end start'],
   })
-  // 透明度在 about 顶部升到约 30vh 时归 0：起点 60%→进度 p 时顶部在 0.6×(1−p)，
-  // 令 =0.3 解得 p=0.5，故 opacity 区间 [0, 0.5]
-  const blur = useTransform(scrollYProgress, [0, 0.5], ['blur(0px)', 'blur(0px)'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const blur = useTransform(scrollYProgress, [0, 0.3], ['blur(0px)', 'blur(0px)'])
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
   // 视差：标题上升更快、字距随滚动拉开；正文上升慢一点
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -96])
   const bodyY = useTransform(scrollYProgress, [0, 1], [0, -52])
   const titleSpacing = useTransform(scrollYProgress, [0, 1], ['0.01em', '0.42em'])
   return (
-    <section className="hero">
+    <section className="hero" ref={aboutRef}>
       <motion.div
         className="about"
         lang={lang}
-        ref={aboutRef}
         style={{ filter: blur, opacity }}
       >
         {/* 入场动画放内层，避免其 fill 锁住 opacity 覆盖外层滚动 opacity */}

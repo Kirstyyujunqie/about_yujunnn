@@ -92,9 +92,10 @@ canvas {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  /* 标题正文略下移 */
+  /* 首页文案从画面中部开始，避开人物下方的白色上衣。 */
+  padding-top: 36vh;
   padding-bottom: 6vh;
 }
 
@@ -270,6 +271,11 @@ canvas {
   text-align: center;
   pointer-events: none;
   padding: 0 24px;
+  text-shadow: 0 2px 6px rgba(18, 24, 22, 0.55), 0 0 20px rgba(18, 24, 22, 0.25);
+}
+
+.hero .scroll-cue {
+  text-shadow: 0 2px 6px rgba(18, 24, 22, 0.55);
 }
 /* 入场动画放内层：其 fill:both 只锁内层 opacity，不影响外层滚动 opacity */
 .about-intro {
